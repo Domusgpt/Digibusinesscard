@@ -206,12 +206,10 @@
         }
 
         .contact-info p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 500;
             color: var(--text-light);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            word-break: break-word;
         }
 
         /* Action Buttons */
@@ -451,8 +449,8 @@
             opacity: 0,
             y: 15,
             duration: 0.5,
-            stagger: 0.15,
-            ease: "back.out(1.2)",
+            stagger: 0.1,
+            ease: "power2.out",
             scrollTrigger: {
                 trigger: ".actions",
                 start: "top 90%",
