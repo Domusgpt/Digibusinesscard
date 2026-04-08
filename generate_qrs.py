@@ -27,7 +27,7 @@ img_1 = qr.make_image(
     module_drawer=RoundedModuleDrawer(),
     color_mask=SolidFillColorMask(back_color=(21, 21, 21), front_color=(212, 175, 55))
 )
-img_1.save("digital-business-card/qrcode_gold_on_black.png")
+img_1.save("qrcode_gold_on_black.png")
 
 # Option 2: Black on White with rounded dots
 img_2 = qr.make_image(
@@ -35,10 +35,10 @@ img_2 = qr.make_image(
     module_drawer=RoundedModuleDrawer(),
     color_mask=SolidFillColorMask(back_color=(255, 255, 255), front_color=(21, 21, 21))
 )
-img_2.save("digital-business-card/qrcode_black_on_white.png")
+img_2.save("qrcode_black_on_white.png")
 
 # VCard QR Code
-with open("digital-business-card/mary_hennedy.vcf", "r") as f:
+with open("mary_hennedy.vcf", "r") as f:
     vcard_data = f.read()
 
 qr_vcard = qrcode.QRCode(
@@ -55,5 +55,5 @@ img_vcard = qr_vcard.make_image(
     module_drawer=RoundedModuleDrawer(),
     color_mask=SolidFillColorMask(back_color=(255, 255, 255), front_color=(21, 21, 21))
 )
-img_vcard.save("digital-business-card/qrcode_vcard_direct.png")
+img_vcard.save("qrcode_vcard_direct.png")
 print("QR Codes generated successfully.")
