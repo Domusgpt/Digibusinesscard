@@ -8,7 +8,7 @@ if not os.path.exists('print'):
 # Constants for business card (3.5" x 2" at 300 DPI)
 WIDTH = 1050
 HEIGHT = 600
-BLEED = 38 # 1/8" bleed
+BLEED = 38 # 1/8" bleed (300 dpi * 0.125 = 37.5)
 FULL_WIDTH = WIDTH + 2 * BLEED
 FULL_HEIGHT = HEIGHT + 2 * BLEED
 
@@ -22,14 +22,9 @@ def draw_text(draw, text, position, font, fill, align="left"):
     draw.text(position, text, font=font, fill=fill)
 
 try:
-    try:
-        font_large = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 55)
-        font_medium = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 32)
-        font_small = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 26)
-    except IOError:
-        font_large = ImageFont.load_default()
-        font_medium = ImageFont.load_default()
-        font_small = ImageFont.load_default()
+    font_large = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 55)
+    font_medium = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 32)
+    font_small = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 26)
 except Exception as e:
     font_large = font_medium = font_small = ImageFont.load_default()
 
@@ -109,7 +104,8 @@ draw_front.text(((FULL_WIDTH - get_text_width(name_text, font_large)) // 2, FULL
 draw_front.text(((FULL_WIDTH - get_text_width(title_text, font_medium)) // 2, FULL_HEIGHT - 120), title_text, font=font_medium, fill=LIGHT_GRAY)
 draw_front.text(((FULL_WIDTH - get_text_width(contact_text, font_small)) // 2, FULL_HEIGHT - 60), contact_text, font=font_small, fill=WHITE)
 
-front_img.save('print/business_card_front.png')
+front_img.save('print/Mary_Hennedy_Business_Card_Front.png', dpi=(300, 300))
+front_img.save('print/Mary_Hennedy_Business_Card_Front.pdf', resolution=300.0)
 
 
 # --- BACK OF CARD ---
@@ -131,6 +127,7 @@ try:
 except Exception as e:
     print(f"Could not load QR code: {e}")
 
-back_img.save('print/business_card_back.png')
+back_img.save('print/Mary_Hennedy_Business_Card_Back.png', dpi=(300, 300))
+back_img.save('print/Mary_Hennedy_Business_Card_Back.pdf', resolution=300.0)
 
-print("Updated print ready designs generated in print/ directory.")
+print("Updated print ready designs generated in print/ directory as High-Res PNGs and PDFs.")
