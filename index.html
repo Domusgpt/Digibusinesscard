@@ -156,7 +156,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 1.2rem;
-            padding: 1rem;
+            padding: 0.8rem;
             border-radius: 12px;
             background: rgba(255,255,255,0.03);
             transition: all 0.3s ease;
@@ -206,10 +206,10 @@
         }
 
         .contact-info p {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: var(--text-light);
-            word-break: break-word;
+            word-break: break-all;
         }
 
         /* Action Buttons */
@@ -431,31 +431,21 @@
             }
         });
 
-        // Animate contact items staggered
-        gsap.from(".contact-item", {
+        // Animate contact items and buttons in the main timeline
+        tl.from(".contact-item", {
             opacity: 0,
             x: -20,
             duration: 0.6,
             stagger: 0.15,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: "#contactCard",
-                start: "top 85%",
-            }
-        });
-
-        // Animate buttons
-        gsap.from(".btn", {
+            ease: "power2.out"
+        }, "-=0.2")
+        .from(".btn", {
             opacity: 0,
             y: 15,
             duration: 0.5,
             stagger: 0.1,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: ".actions",
-                start: "top 90%",
-            }
-        });
+            ease: "power2.out"
+        }, "-=0.2");
 
         // Web Share API implementation
         function shareCard() {
