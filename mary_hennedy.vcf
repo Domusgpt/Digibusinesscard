@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Hennedy;Mary;;;
+FN:Mary Hennedy
+ORG:Goldstone Realty
+TITLE:Real Estate Agent
+TEL;TYPE=WORK,VOICE:+16095008446
+EMAIL;TYPE=WORK:maryhennedy@goldstonerealty.com
+URL:http://www.goldstonerealty.com
+END:VCARD
